@@ -172,7 +172,7 @@ class _LoginPageState extends State<LoginPage> {
                       onPressed: () {
                         Map<String, dynamic> user = ({
                           'mail': mail.toString(),
-                          'password': password.toString()
+                          'password': password.toString(),
                         });
                         if (_key.currentState!.validate()) {
                           loginUserWithMail(context, user);

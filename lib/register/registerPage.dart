@@ -168,7 +168,8 @@ class _RegisterPageState extends State<RegisterPage> {
                         Map<String, dynamic> UserAdd = ({
                           'mail': mail.toString(),
                           'name': name.toString(),
-                          'password': password.toString()
+                          'password': password.toString(),
+                          'signupType':'email'
                         });
                         if (_key.currentState!.validate()) {
                           addUser(context, UserAdd);

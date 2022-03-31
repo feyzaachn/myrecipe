@@ -21,6 +21,10 @@ class SharedPrefs {
     return _prefs!.setString("password", password);
   }
 
+  static Future<bool> saveUid(String uid) async {
+    return _prefs!.setString('uid', uid);
+  }
+
   //Shared üzerinde kayıtlı olan bütün verileri siler
   static Future<bool> sharedClear() async {
     return _prefs!.clear();
@@ -34,5 +38,6 @@ class SharedPrefs {
   //Kayıtlı veri varsa alıyoruz yoksa boş değer atıyoruz
   static String? get getMail => _prefs!.getString("mail") ?? null;
   static String? get getPassword => _prefs!.getString("password") ?? null;
+  static String? get getUid => _prefs!.getString("uid") ?? null;
   static bool get getLogin => _prefs!.getBool('login') ?? false;
 }

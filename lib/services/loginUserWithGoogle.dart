@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:myrecipe/home_page/homePage.dart';
 import 'package:myrecipe/login/sharedPrefs.dart';
+import 'package:myrecipe/services/createUserProfile.dart';
 import 'package:myrecipe/services/databaseAddUserInfo.dart';
 
 Future<void> userLoginWithGoogle(BuildContext context) async {
@@ -18,14 +19,16 @@ Future<void> userLoginWithGoogle(BuildContext context) async {
 
     UserCredential result = await auth.signInWithCredential(authCredential);
     User? user = result.user;
-    Map<String?,dynamic> Users =({'name': user!.displayName.toString(),'mail': user.email.toString()});
+    Map<String?,dynamic> Users =({'name': user!.displayName.toString(),'mail': user.email.toString(),
+    'ProfilePhoto':user.photoURL,'phoneNumber':user.phoneNumber,'signupType':'google'});
 
     if (result != null) {
-      SharedPrefs.saveMail(user.email.toString());
+      SharedPrefs.saveUid(user.uid.toString());
       SharedPrefs.login();
       addUserDatabase(Users);
+      createUserProfile(Users);
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => HomePage(user.email.toString(), user.uid.toString())));
+          context, MaterialPageRoute(builder: (context) => HomePage()));
     } //MaterialpageRoute,
 
   }

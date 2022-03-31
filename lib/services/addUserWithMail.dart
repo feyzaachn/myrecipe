@@ -1,6 +1,7 @@
 ﻿import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:myrecipe/login/loginPage.dart';
+import 'package:myrecipe/services/createUserProfile.dart';
 import 'package:myrecipe/services/databaseAddUserInfo.dart';
 
 void addUser(BuildContext context,Map<String,dynamic> Useradd) {
@@ -9,6 +10,7 @@ void addUser(BuildContext context,Map<String,dynamic> Useradd) {
       password: Useradd['password'].toString()).then((user) {
     //başarılıysa
     addUserDatabase(Useradd);
+    createUserProfile(Useradd);
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => LoginPage()));
   }).catchError((error) {

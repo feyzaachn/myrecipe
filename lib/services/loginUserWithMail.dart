@@ -11,10 +11,11 @@ Future<void> loginUserWithMail(BuildContext context,Map<String,dynamic> User)asy
       //başarılıysa
       SharedPrefs.saveMail(User['mail'].toString().toString());
       SharedPrefs.savePassword(User['password'].toString());
+      SharedPrefs.saveUid(FirebaseAuth.instance.currentUser!.uid.toString());
       SharedPrefs.login();
       Navigator.pushAndRemoveUntil(
           context,
-          MaterialPageRoute(builder: (_) => HomePage(User['mail'], User['password'])),
+          MaterialPageRoute(builder: (_) => HomePage()),
               (route) => false);
     }).catchError((error) {
       showDialog(

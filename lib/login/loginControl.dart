@@ -18,7 +18,7 @@ class _LoginControlState extends State<LoginControl> {
             context,
             MaterialPageRoute(
                 builder: (context) =>
-                    HomePage(SharedPrefs.getMail, SharedPrefs.getPassword)));
+                    HomePage()));
       } else {
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => LoginPage()));
