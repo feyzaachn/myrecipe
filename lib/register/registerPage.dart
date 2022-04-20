@@ -2,7 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:myrecipe/login/loginPage.dart';
-import 'package:myrecipe/services/addUserWithMail.dart';
+import 'package:myrecipe/services/addUser/addUserWithMail.dart';
 import 'package:myrecipe/widgets/background.dart';
 import 'package:myrecipe/widgets/textFormField.dart';
 

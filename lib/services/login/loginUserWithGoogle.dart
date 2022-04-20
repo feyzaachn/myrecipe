@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:myrecipe/home_page/homePage.dart';
 import 'package:myrecipe/login/sharedPrefs.dart';
-import 'package:myrecipe/services/createUserProfile.dart';
-import 'package:myrecipe/services/databaseAddUserInfo.dart';
+import 'package:myrecipe/services/userProfile/createUserProfile.dart';
+import 'package:myrecipe/services/addUser/databaseAddUserInfo.dart';
 
 Future<void> userLoginWithGoogle(BuildContext context) async {
   final FirebaseAuth auth = FirebaseAuth.instance;

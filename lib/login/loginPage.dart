@@ -1,8 +1,8 @@
 ﻿import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:myrecipe/register/registerPage.dart';
-import 'package:myrecipe/services/loginUserWithGoogle.dart';
-import 'package:myrecipe/services/loginUserWithMail.dart';
+import 'package:myrecipe/services/login/loginUserWithGoogle.dart';
+import 'package:myrecipe/services/login/loginUserWithMail.dart';
 
 class LoginPage extends StatefulWidget {
   @override

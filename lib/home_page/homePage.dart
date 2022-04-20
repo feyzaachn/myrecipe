@@ -37,8 +37,10 @@ class _HomePageState extends State<HomePage> {
         .collection('UserProfile')
         .doc(SharedPrefs.getUid)
         .get()
-        .then((DocumentSnapshot ds) async {
-      profileInfo=ds.data() as Map<String, dynamic>?;
+        .then((DocumentSnapshot ds) {
+          setState(() {
+            profileInfo=ds.data() as Map<String, dynamic>?;
+          });
     });
     return SafeArea(
       child: Scaffold(

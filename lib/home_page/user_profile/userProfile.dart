@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myrecipe/home_page/user_profile/profile_editing/profileEditingPage.dart';
 import 'package:myrecipe/login/sharedPrefs.dart';
-import 'package:myrecipe/services/signOutGoogle.dart';
+import 'package:myrecipe/services/signOut/signOutGoogle.dart';
 import '../../login/loginPage.dart';
 
 Widget userProfileBody(
@@ -29,6 +29,7 @@ Widget userProfileBody(
                         MaterialPageRoute(builder: (context) => LoginPage()),
                         (_) => false);
                   },
+                  heroTag: "fab1",
                   elevation: 0,
                   backgroundColor: Colors.transparent,
                   child: Icon(
@@ -39,10 +40,11 @@ Widget userProfileBody(
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ProfileEditing()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ProfileEditing(ProfileInfo)));
+
                   },
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.cyan),
@@ -120,6 +122,7 @@ Widget userProfileBody(
                       FloatingActionButton(
                         onPressed: () {},
                         child: Image.asset("assets/icon/email.png"),
+                        heroTag: "fab2",
                         backgroundColor: Colors.transparent,
                         mini: true,
                         elevation: 0,
@@ -139,6 +142,7 @@ Widget userProfileBody(
                       FloatingActionButton(
                         onPressed: () {},
                         child: Image.asset("assets/icon/phone.png"),
+                        heroTag: "fab3",
                         backgroundColor: Colors.transparent,
                         mini: true,
                         elevation: 0,
@@ -156,6 +160,7 @@ Widget userProfileBody(
                       FloatingActionButton(
                         onPressed: () {},
                         child: Image.asset("assets/icon/instagram.png"),
+                        heroTag: "fab4",
                         backgroundColor: Colors.transparent,
                         mini: true,
                         elevation: 0,
@@ -177,6 +182,7 @@ Widget userProfileBody(
                       FloatingActionButton(
                         onPressed: () {},
                         child: Image.asset("assets/icon/twitter.png"),
+                        heroTag: "fab5",
                         backgroundColor: Colors.transparent,
                         mini: true,
                         elevation: 0,
@@ -194,6 +200,7 @@ Widget userProfileBody(
                       FloatingActionButton(
                         onPressed: () {},
                         child: Image.asset("assets/icon/facebook.png"),
+                        heroTag: "fab6",
                         backgroundColor: Colors.transparent,
                         mini: true,
                         elevation: 0,
@@ -211,6 +218,7 @@ Widget userProfileBody(
                       FloatingActionButton(
                         onPressed: () {},
                         child: Image.asset("assets/icon/youtube.png"),
+                        heroTag: "fab7",
                         backgroundColor: Colors.transparent,
                         mini: true,
                         elevation: 0,

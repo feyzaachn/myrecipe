@@ -1,8 +1,8 @@
 ﻿import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:myrecipe/login/loginPage.dart';
-import 'package:myrecipe/services/createUserProfile.dart';
-import 'package:myrecipe/services/databaseAddUserInfo.dart';
+import 'package:myrecipe/services/userProfile/createUserProfile.dart';
+import 'package:myrecipe/services/addUser/databaseAddUserInfo.dart';
 
 void addUser(BuildContext context,Map<String,dynamic> Useradd) {
   FirebaseAuth.instance.createUserWithEmailAndPassword(
