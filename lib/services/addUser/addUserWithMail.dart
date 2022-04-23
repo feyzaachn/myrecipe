@@ -6,9 +6,10 @@ import 'package:myrecipe/services/addUser/databaseAddUserInfo.dart';
 
 void addUser(BuildContext context,Map<String,dynamic> Useradd) {
   FirebaseAuth.instance.createUserWithEmailAndPassword(
-      email: Useradd['mail'].toString(),
-      password: Useradd['password'].toString()).then((user) {
+      email: Useradd['Mail'].toString(),
+      password: Useradd['Password'].toString()).then((user) {
     //başarılıysa
+    Useradd['Uid']=FirebaseAuth.instance.currentUser!.uid.toString();
     addUserDatabase(Useradd);
     createUserProfile(Useradd);
     Navigator.push(

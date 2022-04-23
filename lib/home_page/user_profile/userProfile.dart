@@ -32,7 +32,7 @@ Widget userProfileBody(
                   heroTag: "fab1",
                   elevation: 0,
                   backgroundColor: Colors.transparent,
-                  child: Icon(
+                  child: const Icon(
                     Icons.settings,
                     size: 30,
                     color: Colors.black,
@@ -53,7 +53,7 @@ Widget userProfileBody(
                       borderRadius: BorderRadius.circular(22),
                     )),
                   ),
-                  child: Text("Profili düzenle"),
+                  child: const Text("Profili düzenle"),
                 )
               ],
             ),
@@ -74,7 +74,7 @@ Widget userProfileBody(
                           fit: BoxFit.cover, image: ProfilePhoto(ProfileInfo))),
                   height: 170,
                   width: 170,
-                  padding: EdgeInsets.all(0),
+                  padding: const EdgeInsets.all(0),
                 )
               ],
             ),
@@ -85,7 +85,7 @@ Widget userProfileBody(
             children: [
               Text(
                 ProfileInfo['Name'],
-                style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+                style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
               )
             ],
           ),
@@ -101,15 +101,15 @@ Widget userProfileBody(
                   color: Colors.white,
                   border: Border.all(color: Colors.cyan, width: 1),
                 ),
-                padding: EdgeInsets.all(8),
+                padding: const EdgeInsets.all(8),
                 child: Text(
                   ProfileInfo['InformationText'],
-                  style: TextStyle(fontSize: 14),
+                  style: const TextStyle(fontSize: 14),
                 ),
               ),
             ],
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           //İletişim
           Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
             Column(
@@ -129,7 +129,7 @@ Widget userProfileBody(
                       ),
                       Text(
                         ProfileInfo['Mail'],
-                        style: TextStyle(fontSize: 10),
+                        style: const TextStyle(fontSize: 10),
                       ),
                     ],
                   ),
@@ -148,7 +148,7 @@ Widget userProfileBody(
                         elevation: 0,
                       ),
                       Text(ProfileInfo['phoneNumber'],
-                          style: TextStyle(fontSize: 10)),
+                          style: const TextStyle(fontSize: 10)),
                     ],
                   ),
                 ),
@@ -166,7 +166,7 @@ Widget userProfileBody(
                         elevation: 0,
                       ),
                       Text(ProfileInfo['instagramInfo'],
-                          style: TextStyle(fontSize: 10)),
+                          style: const TextStyle(fontSize: 10)),
                     ],
                   ),
                 ),
@@ -188,7 +188,7 @@ Widget userProfileBody(
                         elevation: 0,
                       ),
                       Text(ProfileInfo['twitterInfo'],
-                          style: TextStyle(fontSize: 10)),
+                          style: const TextStyle(fontSize: 10)),
                     ],
                   ),
                 ),
@@ -206,7 +206,7 @@ Widget userProfileBody(
                         elevation: 0,
                       ),
                       Text(ProfileInfo['facebookInfo'],
-                          style: TextStyle(fontSize: 10)),
+                          style: const TextStyle(fontSize: 10)),
                     ],
                   ),
                 ),
@@ -224,18 +224,18 @@ Widget userProfileBody(
                         elevation: 0,
                       ),
                       Text(ProfileInfo['youtubeInfo'],
-                          style: TextStyle(fontSize: 10)),
+                          style: const TextStyle(fontSize: 10)),
                     ],
                   ),
                 ),
               ],
             ),
           ]),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
-          Text("Tariflerim"),
-          Divider(
+          const Text("Tariflerim"),
+          const Divider(
             height: 3,
             color: Colors.cyan,
           ),
@@ -252,7 +252,7 @@ ImageProvider ProfilePhoto(Map<String?, dynamic> ProfileInfo) {
     if (ProfileInfo['ProfilePhoto'] != "null") {
       return AssetImage(ProfileInfo['ProfilePhoto']);
     } else {
-      return AssetImage("assets/profileImage/default_profile_image.jpg");
+      return const AssetImage("assets/profileImage/default_profile_image.jpg");
     }
   }
 }

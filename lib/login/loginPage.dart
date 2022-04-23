@@ -1,5 +1,4 @@
 ﻿import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:myrecipe/register/registerPage.dart';
 import 'package:myrecipe/services/login/loginUserWithGoogle.dart';
 import 'package:myrecipe/services/login/loginUserWithMail.dart';
@@ -139,14 +138,14 @@ class _LoginPageState extends State<LoginPage> {
               ),
               Container(
                 width: 300,
-                child: Text("Şifremi unuttum",
+                child: const Text("Şifremi unuttum",
                   textAlign: TextAlign.end,
                   style: TextStyle(
                     decoration: TextDecoration.underline
                   ),
                   ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -171,8 +170,8 @@ class _LoginPageState extends State<LoginPage> {
                       child: const Text("Giriş Yap"),
                       onPressed: () {
                         Map<String, dynamic> user = ({
-                          'mail': mail.toString(),
-                          'password': password.toString(),
+                          'Mail': mail.toString(),
+                          'Password': password.toString(),
                         });
                         if (_key.currentState!.validate()) {
                           loginUserWithMail(context, user);
@@ -180,7 +179,7 @@ class _LoginPageState extends State<LoginPage> {
                       },
                     ),
                   ),
-                  SizedBox(width: 20),
+                  const SizedBox(width: 20),
                   FloatingActionButton(
                     onPressed: () {
                       userLoginWithGoogle(context);
@@ -196,10 +195,10 @@ class _LoginPageState extends State<LoginPage> {
 
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(
-                    child: Text(
+                  const SizedBox(
+                    child: const Text(
                       "Hesabınız yok mu?  ",
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 16,
                       ),
                     ),

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:myrecipe/home_page/user_profile/userProfile.dart';
 import 'package:circular_bottom_navigation/circular_bottom_navigation.dart';
@@ -6,41 +7,47 @@ import 'package:circular_bottom_navigation/tab_item.dart';
 import 'package:myrecipe/login/sharedPrefs.dart';
 
 class HomePage extends StatefulWidget {
+  int position;
+  HomePage({Key? key, required this.position}) : super(key: key);
   @override
-  _HomePageState createState() => _HomePageState();
+  _HomePageState createState() => _HomePageState(selectedPos: position);
 }
 
 List<TabItem> tabItems = List.of([
-  new TabItem(Icons.search, "Ara", Colors.blue,
-      labelStyle: TextStyle(fontWeight: FontWeight.normal)),
-  new TabItem(Icons.home, "Anasayfa", Colors.orange,
-      labelStyle: TextStyle(color: Colors.red, fontWeight: FontWeight.bold)),
-  new TabItem(Icons.book_outlined, "Defter", Colors.red),
-  new TabItem(Icons.person, "Profil", Colors.cyan),
+  TabItem(Icons.search, "Ara", Colors.blue,
+      labelStyle: const TextStyle(fontWeight: FontWeight.normal)),
+  TabItem(Icons.home, "Anasayfa", Colors.orange,
+      labelStyle: const TextStyle(color: Colors.red, fontWeight: FontWeight.bold)),
+  TabItem(Icons.book_outlined, "Defter", Colors.red),
+  TabItem(Icons.person, "Profil", Colors.cyan),
 ]);
 
 class _HomePageState extends State<HomePage> {
 
-  Map<String,dynamic>? profileInfo;
-  int selectedPos = 0;
+  Map<String?,dynamic>? profileInfo;
+  int selectedPos ;
+  _HomePageState({required this.selectedPos});
+
   double bottomNavBarHeight = 50;
   CircularBottomNavigationController? _navigationController;
   @override
   void initState() {
     super.initState();
-    _navigationController = new CircularBottomNavigationController(selectedPos);
+    _navigationController = CircularBottomNavigationController(selectedPos);
   }
 
   @override
   Widget build(BuildContext context) {
-    FirebaseFirestore.instance
-        .collection('UserProfile')
-        .doc(SharedPrefs.getUid)
-        .get()
-        .then((DocumentSnapshot ds) {
-          setState(() {
-            profileInfo=ds.data() as Map<String, dynamic>?;
-          });
+    setState(() {
+      FirebaseFirestore.instance
+          .collection('UserProfile')
+          .doc(SharedPrefs.getUid)
+          .get()
+          .then((DocumentSnapshot ds) {
+        setState(() {
+          profileInfo = ds.data() as Map<String, dynamic>?;
+        });
+      });
     });
     return SafeArea(
       child: Scaffold(
@@ -83,7 +90,7 @@ class _HomePageState extends State<HomePage> {
       controller: _navigationController,
       barHeight: bottomNavBarHeight,
       barBackgroundColor: Colors.white,
-      animationDuration: Duration(milliseconds: 300),
+      animationDuration: const Duration(milliseconds: 300),
       selectedCallback: (int? selectedPos) {
         setState(() {
           this.selectedPos = selectedPos!;
@@ -100,7 +107,7 @@ class _HomePageState extends State<HomePage> {
 
 
   Widget Page(Color selectedColor, int position) {
-    if (position == 3) {
+    if (position == 3&& profileInfo != null) {
       return userProfileBody(context,profileInfo!);
     } else {
       return Container(

@@ -4,21 +4,20 @@ import 'package:myrecipe/login/loginPage.dart';
 import 'package:myrecipe/login/sharedPrefs.dart';
 
 class LoginControl extends StatefulWidget {
-
   @override
   _LoginControlState createState() => _LoginControlState();
 }
 
 class _LoginControlState extends State<LoginControl> {
-  //Login olup olmadığımızı kontrol ediyoruz, login durumuna göre sayfa yönlendirmesi yapıyoruz.
+
   Future pageRotate() async {
-    Future.delayed(Duration(seconds: 2), () {
+    Future.delayed(Duration(seconds: 3), () {
       if (SharedPrefs.getLogin) {
         Navigator.pushReplacement(
             context,
             MaterialPageRoute(
                 builder: (context) =>
-                    HomePage()));
+                    HomePage(position: 0,)));
       } else {
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => LoginPage()));

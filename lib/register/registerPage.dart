@@ -166,9 +166,9 @@ class _RegisterPageState extends State<RegisterPage> {
                       child: const Text("Kayıt Ol"),
                       onPressed: () {
                         Map<String, dynamic> UserAdd = ({
-                          'mail': mail.toString(),
-                          'name': name.toString(),
-                          'password': password.toString(),
+                          'Mail': mail.toString(),
+                          'Name': name.toString(),
+                          'Password': password.toString(),
                           'signupType':'email'
                         });
                         if (_key.currentState!.validate()) {
