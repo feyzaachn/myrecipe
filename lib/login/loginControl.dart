@@ -1,7 +1,7 @@
 ﻿import 'package:flutter/material.dart';
-import 'package:myrecipe/home_page/homePage.dart';
 import 'package:myrecipe/login/loginPage.dart';
 import 'package:myrecipe/login/sharedPrefs.dart';
+import 'package:myrecipe/main/mainPage.dart';
 
 class LoginControl extends StatefulWidget {
   @override
@@ -17,7 +17,7 @@ class _LoginControlState extends State<LoginControl> {
             context,
             MaterialPageRoute(
                 builder: (context) =>
-                    HomePage(position: 0,)));
+                    HomePage(position: 1,)));
       } else {
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => LoginPage()));

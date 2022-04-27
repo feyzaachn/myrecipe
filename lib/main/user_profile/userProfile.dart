@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:myrecipe/home_page/user_profile/profile_editing/profileEditingPage.dart';
 import 'package:myrecipe/login/sharedPrefs.dart';
+import 'package:myrecipe/main/user_profile/profile_editing/profileEditingPage.dart';
 import 'package:myrecipe/services/signOut/signOutGoogle.dart';
 import '../../login/loginPage.dart';
 

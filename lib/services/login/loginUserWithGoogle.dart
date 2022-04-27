@@ -1,8 +1,8 @@
 ﻿import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:myrecipe/home_page/homePage.dart';
 import 'package:myrecipe/login/sharedPrefs.dart';
+import 'package:myrecipe/main/mainPage.dart';
 import 'package:myrecipe/services/userProfile/createUserProfile.dart';
 import 'package:myrecipe/services/addUser/databaseAddUserInfo.dart';
 

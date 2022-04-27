@@ -3,14 +3,13 @@ import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:myrecipe/home_page/homePage.dart';
 import 'package:myrecipe/login/sharedPrefs.dart';
 import 'package:myrecipe/services/userProfile/createUserProfile.dart';
 import 'package:myrecipe/splashScreen.dart';
 
 class ProfileEditing extends StatefulWidget {
   Map<String?, dynamic>? profileInfo;
-  ProfileEditing(this.profileInfo);
+  ProfileEditing(this.profileInfo, {Key? key}) : super(key: key);
   @override
   _ProfileEditingPageState createState() =>
       _ProfileEditingPageState(profileInfo!);
@@ -23,6 +22,7 @@ class _ProfileEditingPageState extends State<ProfileEditing> {
   _ProfileEditingPageState(this.profileInfo);
   Map<String?, dynamic>? changedInfo;
 
+  @override
   Widget build(BuildContext context) {
     changedInfo = profileInfo;
     final _key = GlobalKey<FormState>();
