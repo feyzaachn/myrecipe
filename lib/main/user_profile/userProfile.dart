@@ -6,14 +6,14 @@ import '../../login/loginPage.dart';
 
 Widget userProfileBody(
     BuildContext context, Map<String?, dynamic> ProfileInfo) {
-  return Container(
+  return SizedBox(
     width: double.infinity,
     height: double.infinity,
     child: SingleChildScrollView(
       child: Column(
         children: [
           //2 button
-          Container(
+          SizedBox(
             width: double.infinity,
             height: 50,
             child: Row(
@@ -26,7 +26,7 @@ Widget userProfileBody(
                     SharedPrefs.sharedClear();
                     Navigator.pushAndRemoveUntil(
                         context,
-                        MaterialPageRoute(builder: (context) => LoginPage()),
+                        MaterialPageRoute(builder: (context) => const LoginPage()),
                         (_) => false);
                   },
                   heroTag: "fab1",
@@ -59,7 +59,7 @@ Widget userProfileBody(
             ),
           ),
           //Image
-          Container(
+          SizedBox(
             width: double.infinity,
             height: 190,
             child: Row(
@@ -115,7 +115,7 @@ Widget userProfileBody(
             Column(
               children: [
                 //E-mail
-                Container(
+                SizedBox(
                   width: 200,
                   child: Row(
                     children: [
@@ -135,7 +135,7 @@ Widget userProfileBody(
                   ),
                 ),
                 //Telefon
-                Container(
+                SizedBox(
                   width: 200,
                   child: Row(
                     children: [
@@ -153,7 +153,7 @@ Widget userProfileBody(
                   ),
                 ),
                 //instagram
-                Container(
+                SizedBox(
                   width: 200,
                   child: Row(
                     children: [
@@ -175,7 +175,7 @@ Widget userProfileBody(
             Column(
               children: [
                 //twitter
-                Container(
+                SizedBox(
                   width: 200,
                   child: Row(
                     children: [
@@ -193,7 +193,7 @@ Widget userProfileBody(
                   ),
                 ),
                 //facebook
-                Container(
+                SizedBox(
                   width: 200,
                   child: Row(
                     children: [
@@ -211,7 +211,7 @@ Widget userProfileBody(
                   ),
                 ),
                 //youtube
-                Container(
+                SizedBox(
                   width: 200,
                   child: Row(
                     children: [

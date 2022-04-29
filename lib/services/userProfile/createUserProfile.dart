@@ -34,6 +34,7 @@ void createUserProfile(Map<String?, dynamic> User) {
             User['phoneNumber'] != null ? User['phoneNumber'].toString() : "",
         'signupType':
             User['signupType'] != null ? User['signupType'].toString() : "",
+        'numberOfShares': User['numberOfShares'] ?? 0,
       });
     }
   });
@@ -64,5 +65,6 @@ void updateUserProfile(Map<String?, dynamic> User) {
         User['phoneNumber'] != null ? User['phoneNumber'].toString() : "",
     'signupType':
         User['signupType'] != null ? User['signupType'].toString() : "",
+    'numberOfShares': User['numberOfShares'] ?? 0,
   });
 }

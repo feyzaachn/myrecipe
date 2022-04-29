@@ -13,7 +13,7 @@ void addUser(BuildContext context,Map<String,dynamic> Useradd) {
     addUserDatabase(Useradd);
     createUserProfile(Useradd);
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => LoginPage()));
+        context, MaterialPageRoute(builder: (context) => const LoginPage()));
   }).catchError((error) {
     //başarılı değilse
     showDialog(
@@ -21,8 +21,8 @@ void addUser(BuildContext context,Map<String,dynamic> Useradd) {
       builder: (BuildContext context) {
         return AlertDialog(
           actionsAlignment: MainAxisAlignment.center,
-          title: Text("Kayıt işlemi başarısız!"),
-          content: Text("Bu mail adresine ait bir kulllanıcı bulunmaktadır."),
+          title: const Text("Kayıt işlemi başarısız!"),
+          content: const Text("Bu mail adresine ait bir kulllanıcı bulunmaktadır."),
           actions: [
             ElevatedButton(
               style: ButtonStyle(
@@ -30,7 +30,7 @@ void addUser(BuildContext context,Map<String,dynamic> Useradd) {
               ),
               onPressed: (){
                 Navigator.pop(context);
-              }, child: Text("Tamam"),
+              }, child: const Text("Tamam"),
             )
           ],
         );

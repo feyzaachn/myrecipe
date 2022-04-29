@@ -13,8 +13,8 @@ Future<void> signOutGoogle({required BuildContext context}) async {
       builder: (BuildContext context) {
         return AlertDialog(
           actionsAlignment: MainAxisAlignment.center,
-          title: Text("Çıkış yapılamadı!"),
-          content: Text("Lütfen tekrar deneyiniz."),
+          title: const Text("Çıkış yapılamadı!"),
+          content: const Text("Lütfen tekrar deneyiniz."),
           actions: [
             ElevatedButton(
               style: ButtonStyle(
@@ -23,7 +23,7 @@ Future<void> signOutGoogle({required BuildContext context}) async {
               onPressed: () {
                 Navigator.pop(context);
               },
-              child: Text("Tamam"),
+              child: const Text("Tamam"),
             )
           ],
         );

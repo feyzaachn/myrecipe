@@ -1,5 +1,4 @@
 ﻿import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:myrecipe/login/loginPage.dart';
 import 'package:myrecipe/services/addUser/addUserWithMail.dart';
@@ -7,12 +6,13 @@ import 'package:myrecipe/widgets/background.dart';
 import 'package:myrecipe/widgets/textFormField.dart';
 
 class RegisterPage extends StatefulWidget {
+  const RegisterPage({Key? key}) : super(key: key);
+
   @override
   _RegisterPageState createState() => _RegisterPageState();
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  @override
   //kayıt parametreleri
   String? mail, password, password2, name;
   @override
@@ -24,6 +24,7 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   final _key = GlobalKey<FormState>();
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       //backgroundColor: Colors.white,
@@ -34,14 +35,14 @@ class _RegisterPageState extends State<RegisterPage> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
               Background(),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               //Email
               Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 5, horizontal: 50),
                 child: TextFormFieldWidgets(
                   validator: (enteredMail) {
-                    if (enteredMail.toString().length == 0) {
+                    if (enteredMail.toString().isEmpty) {
                       return "E-mail adresinizi giriniz";
                     } else if (enteredMail!.contains("@")) {
                       return null;
@@ -68,7 +69,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     const EdgeInsets.symmetric(vertical: 5, horizontal: 50),
                 child: TextFormFieldWidgets(
                   validator: (enteredName) {
-                    return enteredName!.length != 0
+                    return enteredName!.isNotEmpty
                         ? null
                         : "Adınızı soyadınızı giriniz";
                   },
@@ -91,7 +92,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     const EdgeInsets.symmetric(vertical: 5, horizontal: 50),
                 child: TextFormFieldWidgets(
                   validator: (enteredPassword) {
-                    if (enteredPassword.toString().length == 0) {
+                    if (enteredPassword.toString().isEmpty) {
                       return "Bir şifre giriniz";
                     }
                     if (enteredPassword.toString().length > 6) {
@@ -122,7 +123,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     password2 = enteredPassword2;
                   },
                   validator: (enteredPassword2) {
-                    if (enteredPassword2.toString().length == 0) {
+                    if (enteredPassword2.toString().isEmpty) {
                       return "Şifrenizi tekrar giriniz";
                     }
                     if (enteredPassword2.toString() == password) {
@@ -141,17 +142,17 @@ class _RegisterPageState extends State<RegisterPage> {
                   obscureText: true,
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               //Kayıt Butonu
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Container(
+                  SizedBox(
                     height: 45,
                     width: 130,
                     child: ElevatedButton(
                       style: ButtonStyle(
-                        textStyle: MaterialStateProperty.all(TextStyle(
+                        textStyle: MaterialStateProperty.all(const TextStyle(
                             fontSize: 15, fontWeight: FontWeight.bold)),
                         backgroundColor:
                             MaterialStateProperty.all(Colors.deepPurpleAccent),
@@ -159,7 +160,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15),
-                            side: BorderSide(color: Colors.deepPurpleAccent),
+                            side: const BorderSide(color: Colors.deepPurpleAccent),
                           ),
                         ),
                       ),
@@ -179,14 +180,14 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                 ],
               ),
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
               Container(
                 alignment: Alignment.center,
                 child: GestureDetector(
                   onTap: () => Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => LoginPage())),
+                      MaterialPageRoute(builder: (context) => const LoginPage())),
                   child:
-                      Text("Daha önce kayıt olduysanız giriş ekranına gidin"),
+                      const Text("Daha önce kayıt olduysanız giriş ekranına gidin"),
                 ),
               )
             ],

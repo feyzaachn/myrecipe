@@ -4,6 +4,8 @@ import 'package:myrecipe/login/sharedPrefs.dart';
 import 'package:myrecipe/main/mainPage.dart';
 
 class LoginControl extends StatefulWidget {
+  const LoginControl({Key? key}) : super(key: key);
+
   @override
   _LoginControlState createState() => _LoginControlState();
 }
@@ -11,7 +13,7 @@ class LoginControl extends StatefulWidget {
 class _LoginControlState extends State<LoginControl> {
 
   Future pageRotate() async {
-    Future.delayed(Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 3), () {
       if (SharedPrefs.getLogin) {
         Navigator.pushReplacement(
             context,
@@ -20,7 +22,7 @@ class _LoginControlState extends State<LoginControl> {
                     HomePage(position: 1,)));
       } else {
         Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => LoginPage()));
+            context, MaterialPageRoute(builder: (context) => const LoginPage()));
       }
     });
   }
@@ -39,7 +41,7 @@ class _LoginControlState extends State<LoginControl> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Expanded(
-            child: Container(
+            child: SizedBox(
               height: 150,
               width: 200,
               child: Image.asset(

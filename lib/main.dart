@@ -8,10 +8,12 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await SharedPrefs.initialize();
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget{
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build (BuildContext context){
     //ekran dönümünü kitle
@@ -19,7 +21,7 @@ class MyApp extends StatelessWidget{
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: LoginControl(),
     );

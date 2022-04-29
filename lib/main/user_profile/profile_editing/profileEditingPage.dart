@@ -199,7 +199,7 @@ class _ProfileEditingPageState extends State<ProfileEditing> {
                   width: double.infinity,
                   child: Row(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         width: 10,
                       ),
                       FloatingActionButton(
@@ -220,10 +220,10 @@ class _ProfileEditingPageState extends State<ProfileEditing> {
                 //telefon
                 Container(
                   width: double.infinity,
-                  padding: EdgeInsets.symmetric(vertical: 5),
+                  padding: const EdgeInsets.symmetric(vertical: 5),
                   child: Row(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         width: 10,
                       ),
                       FloatingActionButton(
@@ -277,10 +277,10 @@ class _ProfileEditingPageState extends State<ProfileEditing> {
                 //instagram
                 Container(
                   width: double.infinity,
-                  padding: EdgeInsets.symmetric(vertical: 5),
+                  padding: const EdgeInsets.symmetric(vertical: 5),
                   child: Row(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         width: 10,
                       ),
                       FloatingActionButton(
@@ -333,10 +333,10 @@ class _ProfileEditingPageState extends State<ProfileEditing> {
                 //twitter
                 Container(
                   width: double.infinity,
-                  padding: EdgeInsets.symmetric(vertical: 5),
+                  padding: const EdgeInsets.symmetric(vertical: 5),
                   child: Row(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         width: 10,
                       ),
                       FloatingActionButton(
@@ -389,10 +389,10 @@ class _ProfileEditingPageState extends State<ProfileEditing> {
                 //facebook
                 Container(
                   width: double.infinity,
-                  padding: EdgeInsets.symmetric(vertical: 5),
+                  padding: const EdgeInsets.symmetric(vertical: 5),
                   child: Row(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         width: 10,
                       ),
                       FloatingActionButton(
@@ -445,10 +445,10 @@ class _ProfileEditingPageState extends State<ProfileEditing> {
                 //youtube
                 Container(
                   width: double.infinity,
-                  padding: EdgeInsets.symmetric(vertical: 5),
+                  padding: const EdgeInsets.symmetric(vertical: 5),
                   child: Row(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         width: 10,
                       ),
                       FloatingActionButton(

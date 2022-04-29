@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:myrecipe/main/post_page/postPage.dart';
 
-Widget HomePageBody(BuildContext context) {
-  return Container(
+Widget HomePageBody(BuildContext context,Map<String?, dynamic> ProfileInfo) {
+  return SizedBox(
       height: double.infinity,
       width: double.infinity,
       child: SingleChildScrollView(
@@ -19,7 +19,7 @@ Widget HomePageBody(BuildContext context) {
                   ),
                   FloatingActionButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=> PostPage()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=> PostPage(profileInfo: ProfileInfo,)));
                     },
                     child: Image.asset(
                       "assets/icon/postIcon.png",

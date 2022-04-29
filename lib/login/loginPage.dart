@@ -4,6 +4,8 @@ import 'package:myrecipe/services/login/loginUserWithGoogle.dart';
 import 'package:myrecipe/services/login/loginUserWithMail.dart';
 
 class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
+
   @override
   _LoginPageState createState() => _LoginPageState();
 }
@@ -42,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
                     mail = enteredMail;
                   },
                   validator: (enteredMail) {
-                    if (enteredMail.toString().length == 0) {
+                    if (enteredMail.toString().isEmpty) {
                       return "E-mail adresinizi giriniz";
                     } else if (enteredMail!.contains("@")) {
                       return null;
@@ -85,7 +87,7 @@ class _LoginPageState extends State<LoginPage> {
                     password = enteredPassword;
                   },
                   validator: (enteredPassword) {
-                    if (enteredPassword.toString().length == 0) {
+                    if (enteredPassword.toString().isEmpty) {
                       return "Bir şifre giriniz";
                     }
                     if (enteredPassword.toString().length > 6) {
@@ -136,9 +138,9 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(
                 height: 5,
               ),
-              Container(
+              const SizedBox(
                 width: 300,
-                child: const Text("Şifremi unuttum",
+                child: Text("Şifremi unuttum",
                   textAlign: TextAlign.end,
                   style: TextStyle(
                     decoration: TextDecoration.underline
@@ -149,7 +151,7 @@ class _LoginPageState extends State<LoginPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Container(
+                  SizedBox(
                     height: 55,
                     width: 165,
                     child: ElevatedButton(
@@ -196,9 +198,9 @@ class _LoginPageState extends State<LoginPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const SizedBox(
-                    child: const Text(
+                    child: Text(
                       "Hesabınız yok mu?  ",
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 16,
                       ),
                     ),

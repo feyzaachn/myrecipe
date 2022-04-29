@@ -1,5 +1,4 @@
-﻿import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 
 class TextFormFieldWidgets extends StatelessWidget{
   ValueChanged<String>? onChanged;
@@ -9,14 +8,14 @@ class TextFormFieldWidgets extends StatelessWidget{
   final Widget prefixIcon;
   final bool obscureText;
 
-  TextFormFieldWidgets({
+  TextFormFieldWidgets({Key? key,
     required this.onChanged,
     required this.validator,
     required this.keyboardType,
     required this.labelText,
     required this.prefixIcon,
     required this.obscureText,
-});
+}) : super(key: key);
 
   @override
   Widget build (BuildContext context){

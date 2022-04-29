@@ -1,8 +1,8 @@
 ﻿import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:myrecipe/login/loginControl.dart';
 import 'package:myrecipe/login/sharedPrefs.dart';
 
-import '../../main/mainPage.dart';
 
 Future<void> loginUserWithMail(BuildContext context,Map<String,dynamic> User)async {
     FirebaseAuth.instance
@@ -16,7 +16,7 @@ Future<void> loginUserWithMail(BuildContext context,Map<String,dynamic> User)asy
       SharedPrefs.login();
       Navigator.pushAndRemoveUntil(
           context,
-          MaterialPageRoute(builder: (_) => HomePage(position: 0,)),
+          MaterialPageRoute(builder: (_) => const LoginControl()),
               (route) => false);
     }).catchError((error) {
       showDialog(
@@ -24,8 +24,8 @@ Future<void> loginUserWithMail(BuildContext context,Map<String,dynamic> User)asy
         builder: (BuildContext context) {
           return AlertDialog(
             actionsAlignment: MainAxisAlignment.center,
-            title: Text("Giriş yapılamadı!"),
-            content: Text("Lütfen bilgilerinizi kontrol edip tekrar deneyiniz."),
+            title: const Text("Giriş yapılamadı!"),
+            content: const Text("Lütfen bilgilerinizi kontrol edip tekrar deneyiniz."),
             actions: [
               ElevatedButton(
                 style: ButtonStyle(
@@ -34,7 +34,7 @@ Future<void> loginUserWithMail(BuildContext context,Map<String,dynamic> User)asy
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: Text("Tamam"),
+                child: const Text("Tamam"),
               )
             ],
           );

@@ -36,8 +36,8 @@ class SharedPrefs {
   }
 
   //Kayıtlı veri varsa alıyoruz yoksa boş değer atıyoruz
-  static String? get getMail => _prefs!.getString("mail") ?? null;
-  static String? get getPassword => _prefs!.getString("password") ?? null;
-  static String? get getUid => _prefs!.getString("uid") ?? null;
+  static String? get getMail => _prefs!.getString("mail");
+  static String? get getPassword => _prefs!.getString("password");
+  static String? get getUid => _prefs!.getString("uid");
   static bool get getLogin => _prefs!.getBool('login') ?? false;
 }
