@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:myrecipe/main/post_page/dropDownMenuItem.dart';
+import 'package:myrecipe/Recipe/recipe_page/dropDownMenuItem.dart';
 import 'package:myrecipe/login/sharedPrefs.dart';
 import 'package:myrecipe/services/postSharing/sharing.dart';
 import 'package:myrecipe/services/userProfile/createUserProfile.dart';
@@ -10,17 +10,17 @@ import 'package:myrecipe/splashScreen.dart';
 import 'package:myrecipe/videoPlayer.dart';
 import 'package:video_player/video_player.dart';
 
-class PostPage extends StatefulWidget {
+class RecipePage extends StatefulWidget {
   Map<String?, dynamic>? profileInfo;
-  PostPage({Key? key, this.profileInfo}) : super(key: key);
+  RecipePage({Key? key, this.profileInfo}) : super(key: key);
 
   @override
-  _PostPageState createState() => _PostPageState(profileInfo);
+  _PostRecipeState createState() => _PostRecipeState(profileInfo);
 }
 
-class _PostPageState extends State<PostPage> {
+class _PostRecipeState extends State<RecipePage> {
   Map<String?, dynamic>? profileInfo;
-  _PostPageState(this.profileInfo);
+  _PostRecipeState(this.profileInfo);
   String? name,
       shortRecipe,
       longRecipe,
@@ -59,7 +59,7 @@ class _PostPageState extends State<PostPage> {
                 //Başlık
                 Padding(
                   padding:
-                      const EdgeInsets.symmetric(vertical: 25, horizontal: 25),
+                  const EdgeInsets.symmetric(vertical: 25, horizontal: 25),
                   child: TextFormField(
                     onChanged: (enteredName) {
                       name = enteredName.toString();
@@ -80,7 +80,7 @@ class _PostPageState extends State<PostPage> {
                           fontWeight: FontWeight.bold,
                           fontSize: 20),
                       contentPadding:
-                          EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                      EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                       enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.red),
                           borderRadius: BorderRadius.all(Radius.circular(22))),
@@ -106,7 +106,7 @@ class _PostPageState extends State<PostPage> {
                       height: 200,
                       decoration: BoxDecoration(
                         borderRadius:
-                            const BorderRadius.all(Radius.circular(5)),
+                        const BorderRadius.all(Radius.circular(5)),
                         color: Colors.white,
                         border: Border.all(color: Colors.red, width: 3),
                         image: DecorationImage(
@@ -151,7 +151,7 @@ class _PostPageState extends State<PostPage> {
                 //Kısa tarif
                 Padding(
                   padding:
-                      const EdgeInsets.symmetric(vertical: 25, horizontal: 25),
+                  const EdgeInsets.symmetric(vertical: 25, horizontal: 25),
                   child: TextFormField(
                     maxLines: 3,
                     onChanged: (enteredShortRecipe) {
@@ -174,7 +174,7 @@ class _PostPageState extends State<PostPage> {
                           fontWeight: FontWeight.bold,
                           fontSize: 20),
                       contentPadding:
-                          EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                      EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                       enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.red),
                           borderRadius: BorderRadius.all(Radius.circular(22))),
@@ -207,116 +207,116 @@ class _PostPageState extends State<PostPage> {
                                 actions: [
                                   Form(
                                       child: Column(
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 40, vertical: 5),
-                                        child: TextFormField(
-                                          onChanged: (enteredSize) {
-                                            materialsSize = enteredSize;
-                                          },
-                                          controller: TextEditingController(
-                                              text: materialsSize ?? " "),
-                                          validator: (enteredSize) {
-                                            if (enteredSize == " " ||
-                                                enteredSize == null) {
-                                              return "Ölçüyü giriniz.(1 bardak,300gram vb.)";
-                                            } else {
-                                              return null;
-                                            }
-                                          },
-                                          cursorColor: Colors.redAccent,
-                                          decoration: const InputDecoration(
-                                              labelText: "Ölçü",
-                                              labelStyle: TextStyle(
-                                                  color: Colors.red,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 20),
-                                              enabledBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                    color: Colors.red),
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(33)),
-                                              ),
-                                              focusedBorder: OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                      color: Colors.red),
-                                                  borderRadius:
-                                                      BorderRadius.all(
-                                                          Radius.circular(
-                                                              33)))),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 40, vertical: 5),
-                                        child: TextFormField(
-                                          onChanged: (enteredMaterils) {
-                                            materailsName = enteredMaterils;
-                                          },
-                                          controller: TextEditingController(
-                                              text: materailsName ?? " "),
-                                          validator: (enteredMaterils) {
-                                            if (enteredMaterils == " " ||
-                                                enteredMaterils == null) {
-                                              return "Malzemeyi giriniz";
-                                            } else {
-                                              return null;
-                                            }
-                                          },
-                                          cursorColor: Colors.redAccent,
-                                          decoration: const InputDecoration(
-                                              labelText: "Malzeme",
-                                              labelStyle: TextStyle(
-                                                  color: Colors.red,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 20),
-                                              enabledBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                    color: Colors.red),
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(33)),
-                                              ),
-                                              focusedBorder: OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                      color: Colors.red),
-                                                  borderRadius:
-                                                      BorderRadius.all(
-                                                          Radius.circular(
-                                                              33)))),
-                                        ),
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
                                         children: [
-                                          ElevatedButton(
-                                              onPressed: () {
-                                                materials!.add(materialsSize
-                                                        .toString() +
-                                                    " " +
-                                                    materailsName.toString());
-                                                materialsSize = null;
-                                                materailsName = null;
-                                                setState(() {});
-                                                Navigator.of(context).pop();
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 40, vertical: 5),
+                                            child: TextFormField(
+                                              onChanged: (enteredSize) {
+                                                materialsSize = enteredSize;
                                               },
-                                              style: ButtonStyle(
-                                                  backgroundColor:
+                                              controller: TextEditingController(
+                                                  text: materialsSize ?? " "),
+                                              validator: (enteredSize) {
+                                                if (enteredSize == " " ||
+                                                    enteredSize == null) {
+                                                  return "Ölçüyü giriniz.(1 bardak,300gram vb.)";
+                                                } else {
+                                                  return null;
+                                                }
+                                              },
+                                              cursorColor: Colors.redAccent,
+                                              decoration: const InputDecoration(
+                                                  labelText: "Ölçü",
+                                                  labelStyle: TextStyle(
+                                                      color: Colors.red,
+                                                      fontWeight: FontWeight.bold,
+                                                      fontSize: 20),
+                                                  enabledBorder: OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                        color: Colors.red),
+                                                    borderRadius: BorderRadius.all(
+                                                        Radius.circular(33)),
+                                                  ),
+                                                  focusedBorder: OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                          color: Colors.red),
+                                                      borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(
+                                                              33)))),
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 40, vertical: 5),
+                                            child: TextFormField(
+                                              onChanged: (enteredMaterils) {
+                                                materailsName = enteredMaterils;
+                                              },
+                                              controller: TextEditingController(
+                                                  text: materailsName ?? " "),
+                                              validator: (enteredMaterils) {
+                                                if (enteredMaterils == " " ||
+                                                    enteredMaterils == null) {
+                                                  return "Malzemeyi giriniz";
+                                                } else {
+                                                  return null;
+                                                }
+                                              },
+                                              cursorColor: Colors.redAccent,
+                                              decoration: const InputDecoration(
+                                                  labelText: "Malzeme",
+                                                  labelStyle: TextStyle(
+                                                      color: Colors.red,
+                                                      fontWeight: FontWeight.bold,
+                                                      fontSize: 20),
+                                                  enabledBorder: OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                        color: Colors.red),
+                                                    borderRadius: BorderRadius.all(
+                                                        Radius.circular(33)),
+                                                  ),
+                                                  focusedBorder: OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                          color: Colors.red),
+                                                      borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(
+                                                              33)))),
+                                            ),
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                            children: [
+                                              ElevatedButton(
+                                                  onPressed: () {
+                                                    materials!.add(materialsSize
+                                                        .toString() +
+                                                        " " +
+                                                        materailsName.toString());
+                                                    materialsSize = null;
+                                                    materailsName = null;
+                                                    setState(() {});
+                                                    Navigator.of(context).pop();
+                                                  },
+                                                  style: ButtonStyle(
+                                                      backgroundColor:
                                                       MaterialStateProperty.all(
                                                           Colors.redAccent)),
-                                              child: const Text("  EKLE  ")),
+                                                  child: const Text("  EKLE  ")),
+                                            ],
+                                          ),
                                         ],
-                                      ),
-                                    ],
-                                  )),
+                                      )),
                                 ],
                               );
                             });
                       },
                       style: ButtonStyle(
                           backgroundColor:
-                              MaterialStateProperty.all(Colors.redAccent)),
+                          MaterialStateProperty.all(Colors.redAccent)),
                       child: Row(
                         children: const [Icon(Icons.add), Text("Malzeme Ekle")],
                       ),
@@ -337,7 +337,7 @@ class _PostPageState extends State<PostPage> {
                 //Uzun tarif
                 Padding(
                   padding:
-                      const EdgeInsets.symmetric(vertical: 25, horizontal: 25),
+                  const EdgeInsets.symmetric(vertical: 25, horizontal: 25),
                   child: TextFormField(
                     maxLines: 5,
                     onChanged: (enteredLongRecipe) {
@@ -360,7 +360,7 @@ class _PostPageState extends State<PostPage> {
                           fontWeight: FontWeight.bold,
                           fontSize: 20),
                       contentPadding:
-                          EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                      EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                       enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.red),
                           borderRadius: BorderRadius.all(Radius.circular(22))),
@@ -422,7 +422,7 @@ class _PostPageState extends State<PostPage> {
                                         Radius.circular(5)),
                                     color: Colors.white,
                                     border:
-                                        Border.all(color: Colors.red, width: 3),
+                                    Border.all(color: Colors.red, width: 3),
                                     image: DecorationImage(
                                         image: FileImage(photoRecipe![i]),
                                         fit: BoxFit.contain),
@@ -491,12 +491,12 @@ class _PostPageState extends State<PostPage> {
                                       Radius.circular(5)),
                                   color: Colors.white,
                                   border:
-                                      Border.all(color: Colors.red, width: 3),
+                                  Border.all(color: Colors.red, width: 3),
                                 ),
                                 child: VideoItems(
                                     videoPlayerController:
-                                        VideoPlayerController.file(
-                                            uploadedFileVideo!)),
+                                    VideoPlayerController.file(
+                                        uploadedFileVideo!)),
                               ),
                             ],
                           ),
@@ -529,7 +529,7 @@ class _PostPageState extends State<PostPage> {
                         },
                         style: ButtonStyle(
                           backgroundColor:
-                              MaterialStateProperty.all(Colors.redAccent),
+                          MaterialStateProperty.all(Colors.redAccent),
                         ),
                         child: Row(
                           children: const [
@@ -653,7 +653,7 @@ class _PostPageState extends State<PostPage> {
                   ElevatedButton(
                     style: ButtonStyle(
                         backgroundColor:
-                            MaterialStateProperty.all(Colors.deepPurpleAccent)),
+                        MaterialStateProperty.all(Colors.deepPurpleAccent)),
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
@@ -671,8 +671,8 @@ class _PostPageState extends State<PostPage> {
           context,
           MaterialPageRoute(
               builder: (context) => const Splash(
-                    position: 1,
-                  )));
+                position: 1,
+              )));
     }
   }
 
@@ -717,7 +717,7 @@ class _PostPageState extends State<PostPage> {
     List photosUrl = [];
     for (int i = 0; i < photos!.length; i++) {
       UploadTask uploadTask =
-          refMultiPhoto!.child(i.toString()).putFile(photos[i]);
+      refMultiPhoto!.child(i.toString()).putFile(photos[i]);
       if (uploadTask == null) return;
       var snapshot = await uploadTask.whenComplete(() {});
       var urlDownload = await snapshot.ref.getDownloadURL();

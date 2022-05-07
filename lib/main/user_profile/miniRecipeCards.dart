@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:myrecipe/Recipe/personal_recipe/personalRecipe.dart';
 import 'package:myrecipe/login/sharedPrefs.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:myrecipe/main/user_profile/personalPost.dart';
 
 class MiniRecipeCards extends StatefulWidget {
   _MiniRecipeCardsState createState() => _MiniRecipeCardsState();
@@ -26,12 +26,12 @@ class _MiniRecipeCardsState extends State<MiniRecipeCards> {
                       Padding(
                           padding: const EdgeInsets.all(25),
                           child: GestureDetector(
-                            onTap: () {
-                              Navigator.push(
+                            onTap: () async{
+                              await Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          PersonalPost(PostId: Recipe.id,)));
+                                          PersonalRecipe(PostId: Recipe.id,)));
                             },
                             child: Container(
                               height: 150,
