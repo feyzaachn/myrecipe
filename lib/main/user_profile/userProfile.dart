@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myrecipe/login/sharedPrefs.dart';
+import 'package:myrecipe/main/user_profile/miniRecipeCards.dart';
 import 'package:myrecipe/main/user_profile/profile_editing/profileEditingPage.dart';
 import 'package:myrecipe/services/signOut/signOutGoogle.dart';
 import '../../login/loginPage.dart';
@@ -68,7 +69,7 @@ Widget userProfileBody(
                 Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(22),
-                      color: Colors.white,
+                      color: const Color(0x53DDF8FF),
                       border: Border.all(color: Colors.cyan, width: 3),
                       image: DecorationImage(
                           fit: BoxFit.cover, image: ProfilePhoto(ProfileInfo))),
@@ -98,7 +99,7 @@ Widget userProfileBody(
                 width: 370,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(22),
-                  color: Colors.white,
+                  color: const Color(0x53DDF8FF),
                   border: Border.all(color: Colors.cyan, width: 1),
                 ),
                 padding: const EdgeInsets.all(8),
@@ -239,11 +240,13 @@ Widget userProfileBody(
             height: 3,
             color: Colors.cyan,
           ),
+          MiniRecipeCards()
         ],
       ),
     ),
   );
 }
+
 
 ImageProvider ProfilePhoto(Map<String?, dynamic> ProfileInfo) {
   if (ProfileInfo['signupType'] == 'google') {

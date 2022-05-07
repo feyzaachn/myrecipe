@@ -4,19 +4,22 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'main/mainPage.dart';
 
 class Splash extends StatefulWidget {
-  const Splash({Key? key}) : super(key: key);
+  final int position;
+  const Splash({Key? key,required this.position}) : super(key: key);
 
   @override
-  _SplashState createState() => _SplashState();
+  _SplashState createState() => _SplashState(pos: this.position);
 }
 
 class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
+  int pos;
+  _SplashState({required this.pos});
   Map<String?,dynamic>? profileInfo;
   @override
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 7), () async {
-     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage(position: 3)));
+     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomePage(position: pos)));
     });
   }
 
@@ -37,7 +40,7 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
               height: 25,
             ),
             Text(
-              "Değişiklikler Kaydediliyor",
+              "İşlem Tamamlanıyor..",
             ),
           ],
         ),

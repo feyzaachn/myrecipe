@@ -508,7 +508,7 @@ class _ProfileEditingPageState extends State<ProfileEditing> {
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      Splash()));
+                                      Splash(position: 3,)));
                         },
                         style: ButtonStyle(
                           backgroundColor:
