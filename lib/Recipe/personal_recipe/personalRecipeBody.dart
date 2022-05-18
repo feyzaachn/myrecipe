@@ -1,13 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:myrecipe/Recipe/recipe_update/recipeUpdate.dart';
 import 'package:myrecipe/login/sharedPrefs.dart';
 import 'package:myrecipe/splashScreen.dart';
 import 'package:myrecipe/videoPlayer.dart';
 import 'package:video_player/video_player.dart';
 
 Widget PersonalRecipeBody(context,Map<String, dynamic>? PostInfo,String id) {
-  //final _key = GlobalKey<FormState>();
   List materials=PostInfo!['Materials'];
   List photos=PostInfo['PhotoRecipe'];
   return Column(
@@ -174,7 +172,7 @@ Widget PersonalRecipeBody(context,Map<String, dynamic>? PostInfo,String id) {
           ),
         ),
       const Divider(
-        height: 2,
+        height: 5,
         color: Colors.cyan,
       ),
       //Butonlar
@@ -188,40 +186,6 @@ Widget PersonalRecipeBody(context,Map<String, dynamic>? PostInfo,String id) {
                 backgroundColor: Colors.cyan,
                 child: const Icon(Icons.delete)
             ),
-            FloatingActionButton(
-              onPressed: (){
-                showDialog(context: context, builder: (BuildContext context) {
-                  return AlertDialog(
-                    title: const Text("Paylaşımınızı güncellemek istediğinize emin misiniz?"),
-                    actions: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          ElevatedButton(
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },
-                              style: ButtonStyle(
-                                  backgroundColor:
-                                  MaterialStateProperty.all(
-                                      Colors.redAccent)),
-                              child: const Text("İptal")),
-                          ElevatedButton(
-                              onPressed: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=>RecipeUpdate(PostInfo, id)));
-                              },
-                              style: ButtonStyle(
-                                  backgroundColor:
-                                  MaterialStateProperty.all(
-                                      Colors.redAccent)),
-                              child: const Text("Güncelle")),
-                        ],
-                      ),
-                    ],
-                  );});
-              },
-              backgroundColor: Colors.cyan,
-              child: const Icon(Icons.loop_outlined),)
           ],
         ),
       )
@@ -249,11 +213,25 @@ Future<void> DeletedRecipe(context,String id) async {
                 child: const Text("İptal")),
             ElevatedButton(
                 onPressed: () async {
+                  //gönderiyi sil
                   await FirebaseFirestore.instance
                       .collection('Recipe')
                       .doc(SharedPrefs.getUid)
                       .collection('Recipes')
                       .doc(id).delete();
+                  //tarif defterlerinden sil
+                  await FirebaseFirestore.instance
+                  .collection('Users')
+                  .get().then((QuerySnapshot qs){
+                    qs.docs.forEach((element) async{
+                      await FirebaseFirestore.instance
+                          .collection('InTheNotebook')
+                          .doc(element.id)
+                          .collection('Recipes')
+                          .doc(id)
+                          .delete();
+                    });
+                  });
                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>const Splash(position: 3)));
                 },
                 style: ButtonStyle(

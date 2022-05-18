@@ -88,19 +88,6 @@ class _MiniRecipeCardsState extends State<MiniRecipeCards> {
                                               ),
                                             ),
                                           ),
-                                          FloatingActionButton(
-                                            heroTag: null,
-                                            onPressed: () {},
-                                            child: Image.asset(
-                                              "assets/icon/recipeIcon.png",
-                                              height: 30,
-                                              width: 30,
-                                            ),
-                                            mini: true,
-                                            backgroundColor:
-                                            Colors.transparent,
-                                            elevation: 0,
-                                          )
                                         ],
                                       )
                                     ],

@@ -292,10 +292,9 @@ class _PostRecipeState extends State<RecipePage> {
                                             children: [
                                               ElevatedButton(
                                                   onPressed: () {
-                                                    materials!.add(materialsSize
-                                                        .toString() +
+                                                    materials!.add((materialsSize!.startsWith(" ") ? materialsSize!.substring(1) : materialsSize!) +
                                                         " " +
-                                                        materailsName.toString());
+                                                        (materailsName!.startsWith(" ") ? materailsName!.substring(1) : materailsName!));
                                                     materialsSize = null;
                                                     materailsName = null;
                                                     setState(() {});
@@ -512,10 +511,10 @@ class _PostRecipeState extends State<RecipePage> {
                         onPressed: () {
                           if (_key.currentState!.validate()) {
                             PostInfo = {
-                              'Name': name!,
+                              'Name': name!.startsWith(" ") ? name!.substring(1) : name!,
                               'MainPhoto': uploadedFilePicture,
-                              'ShortRecipe': shortRecipe,
-                              'LongRecipe': longRecipe,
+                              'ShortRecipe': shortRecipe!.startsWith(" ") ? shortRecipe!.substring(1) : shortRecipe!,
+                              'LongRecipe': longRecipe!.startsWith(" ") ? longRecipe!.substring(1) : longRecipe!,
                               'PostNumber': profileInfo!["numberOfShares"],
                               'Materials': materials,
                               'PhotoRecipe': photoRecipe,
@@ -588,26 +587,25 @@ class _PostRecipeState extends State<RecipePage> {
   void References() {
     refMainPhoto = storage
         .ref()
-        .child("recipe")
+        .child("Recipe")
         .child(SharedPrefs.getUid.toString())
         .child(profileInfo!["numberOfShares"])
         .child("MainPhoto");
     refMultiPhoto = storage
         .ref()
-        .child("recipe")
+        .child("Recipe")
         .child(SharedPrefs.getUid.toString())
         .child(profileInfo!["numberOfShares"])
         .child("PhotoRecipe");
     refVideo = storage
         .ref()
-        .child("recipe")
+        .child("Recipe")
         .child(SharedPrefs.getUid.toString())
         .child(profileInfo!["numberOfShares"])
         .child("VideoRecipe");
   }
 
   Future<void> ShareControl() async {
-    print(PostInfo);
     //bilgilerin eksikliğinin kontrolü
     PostInfo!.forEach((key, value) async {
       if (key == 'Materials') {

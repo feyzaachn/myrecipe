@@ -4,6 +4,8 @@ import 'package:myrecipe/main/home_page/homePageBody.dart';
 import 'package:circular_bottom_navigation/circular_bottom_navigation.dart';
 import 'package:circular_bottom_navigation/tab_item.dart';
 import 'package:myrecipe/login/sharedPrefs.dart';
+import 'package:myrecipe/main/notebook/notebook.dart';
+import 'package:myrecipe/main/search/searchPage.dart';
 import 'package:myrecipe/main/user_profile/userProfile.dart';
 
 class HomePage extends StatefulWidget {
@@ -17,9 +19,9 @@ class HomePage extends StatefulWidget {
 List<TabItem> tabItems = List.of([
   TabItem(Icons.search, "Ara", Colors.blue,
       labelStyle: const TextStyle(fontWeight: FontWeight.normal)),
-  TabItem(Icons.home, "Anasayfa", Colors.orange,
+  TabItem(Icons.home, "Anasayfa", Colors.purple,
       labelStyle:
-          const TextStyle(color: Colors.red, fontWeight: FontWeight.bold)),
+          const TextStyle(color: Colors.purple, fontWeight: FontWeight.bold)),
   TabItem(Icons.book_outlined, "Defter", Colors.red),
   TabItem(Icons.person, "Profil", Colors.cyan),
 ]);
@@ -47,15 +49,18 @@ class _HomePageState extends State<HomePage> {
           .doc(SharedPrefs.getUid)
           .get()
           .then((DocumentSnapshot ds) {
-        setState(() {
+        if(mounted) {
+          setState(() {
           profileInfo = ds.data() as Map<String, dynamic>?;
         });
+        }
       });
     });
     bodyContainer();
 
     return SafeArea(
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         body: Stack(
           children: <Widget>[
             Padding(
@@ -79,7 +84,7 @@ class _HomePageState extends State<HomePage> {
         switch (selectedPos) {
           case 0:
             selectedPage = "Ara";
-            selectedWidget = userProfileBody(context, profileInfo!);
+            selectedWidget = SearchPage();
             break;
           case 1:
             selectedPage = "Anasayfa";
@@ -87,7 +92,7 @@ class _HomePageState extends State<HomePage> {
             break;
           case 2:
             selectedPage = "Defter";
-            selectedWidget = userProfileBody(context, profileInfo!);
+            selectedWidget = Notebook();
             break;
           case 3:
             selectedPage = "Profil";
