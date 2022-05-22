@@ -20,6 +20,7 @@ Widget SearchPage() {
                 Icon(
                   Icons.search_sharp,
                   size: 25,
+                  color: Colors.lightGreen,
                 )
               ],
             ),

@@ -21,41 +21,61 @@ Widget userProfileBody(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                FloatingActionButton(
-                  onPressed: () {
-                    signOutGoogle(context: context);
-                    SharedPrefs.sharedClear();
-                    Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(builder: (context) => const LoginPage()),
-                        (_) => false);
-                  },
-                  heroTag: "fab1",
-                  elevation: 0,
-                  backgroundColor: Colors.transparent,
-                  child: const Icon(
-                    Icons.settings,
-                    size: 30,
-                    color: Colors.black,
-                  ),
-                ),
                 ElevatedButton(
                   onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ProfileEditing(ProfileInfo)));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ProfileEditing(ProfileInfo)));
 
                   },
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.cyan),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(22),
-                    )),
+                          borderRadius: BorderRadius.circular(22),
+                        )),
                   ),
                   child: const Text("Profili düzenle"),
-                )
+                ),
+                FloatingActionButton(
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          actionsAlignment: MainAxisAlignment.center,
+                          title: const Text("Hesabınızdan çıkmak istediğinize emin misiniz?!"),
+                          actions: [
+                            ElevatedButton(onPressed:(){ Navigator.pop(context);},style: ButtonStyle(
+                                backgroundColor:
+                                MaterialStateProperty.all(Colors.cyan)), child: const Text("İptal Et")),
+                            ElevatedButton(
+                              style: ButtonStyle(
+                                  backgroundColor:
+                                  MaterialStateProperty.all(Colors.cyan)),
+                              onPressed: () {
+                                signOutGoogle(context: context);
+                                SharedPrefs.sharedClear();
+                                Navigator.pushAndRemoveUntil(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => const LoginPage()),
+                                        (_) => false);
+                              },
+                              child: const Text("Çıkış Yap"),
+                            )
+                          ],
+                        );
+                      },
+                    );
+                  },
+                  heroTag: "fab1",
+                  elevation: 0,
+                  backgroundColor: Colors.transparent,
+                  child: const Icon(Icons.exit_to_app,
+                    size: 30,
+                    color: Colors.black,),
+                ),
               ],
             ),
           ),
@@ -240,7 +260,7 @@ Widget userProfileBody(
             height: 3,
             color: Colors.cyan,
           ),
-          MiniRecipeCards()
+          const MiniRecipeCards()
         ],
       ),
     ),

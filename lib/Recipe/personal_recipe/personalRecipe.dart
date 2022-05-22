@@ -4,10 +4,10 @@ import 'package:myrecipe/Recipe/personal_recipe/personalRecipeBody.dart';
 import 'package:myrecipe/login/sharedPrefs.dart';
 
 class PersonalRecipe extends StatefulWidget {
-  String? PostId;
+  String PostId;
   PersonalRecipe({Key? key, required this.PostId}) : super(key: key);
   @override
-  _PersonalRecipeState createState() => _PersonalRecipeState(postId: PostId!);
+  _PersonalRecipeState createState() => _PersonalRecipeState(postId: PostId);
 }
 
 class _PersonalRecipeState extends State<PersonalRecipe> {
@@ -37,7 +37,7 @@ class _PersonalRecipeState extends State<PersonalRecipe> {
         ),
         body: PostInfo != null
             ? SingleChildScrollView(
-          child: PersonalRecipeBody(context,PostInfo,postId),
+          child: PersonalRecipeBody(context,PostInfo!,postId),
         )
             : Container(),
       ),

@@ -45,9 +45,9 @@ Widget HomePageBody(BuildContext context,Map<String?, dynamic> ProfileInfo) {
                 ],
               ),
             ),
-            const Divider(height: 5,color: Colors.purple,),
+            const Divider(height: 5,color: Colors.deepPurple,),
             Column(
-              children: [
+              children: const [
                 RecipeCards(),
               ],
             ),

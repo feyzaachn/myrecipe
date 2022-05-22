@@ -8,6 +8,7 @@ import 'package:myrecipe/main/notebook/notebook.dart';
 import 'package:myrecipe/main/search/searchPage.dart';
 import 'package:myrecipe/main/user_profile/userProfile.dart';
 
+
 class HomePage extends StatefulWidget {
   int position;
   HomePage({Key? key, required this.position}) : super(key: key);
@@ -17,19 +18,23 @@ class HomePage extends StatefulWidget {
 }
 
 List<TabItem> tabItems = List.of([
-  TabItem(Icons.search, "Ara", Colors.blue,
-      labelStyle: const TextStyle(fontWeight: FontWeight.normal)),
-  TabItem(Icons.home, "Anasayfa", Colors.purple,
+  TabItem(Icons.search, "Ara", Colors.lightGreen,
+      labelStyle: const TextStyle(
+          color: Colors.lightGreen, fontWeight: FontWeight.normal)),
+  TabItem(Icons.home, "Anasayfa", Colors.deepPurple,
+      labelStyle: const TextStyle(
+          color: Colors.deepPurple, fontWeight: FontWeight.bold)),
+  TabItem(Icons.book_outlined, "Defter", Colors.red,
       labelStyle:
-          const TextStyle(color: Colors.purple, fontWeight: FontWeight.bold)),
-  TabItem(Icons.book_outlined, "Defter", Colors.red),
-  TabItem(Icons.person, "Profil", Colors.cyan),
+          const TextStyle(color: Colors.red, fontWeight: FontWeight.bold)),
+  TabItem(Icons.person, "Profil", Colors.cyan,
+      labelStyle:
+          const TextStyle(color: Colors.cyan, fontWeight: FontWeight.bold)),
 ]);
 
 class _HomePageState extends State<HomePage> {
   Map<String?, dynamic>? profileInfo;
   int selectedPos;
-
   _HomePageState({required this.selectedPos});
 
   double bottomNavBarHeight = 50;
@@ -49,10 +54,10 @@ class _HomePageState extends State<HomePage> {
           .doc(SharedPrefs.getUid)
           .get()
           .then((DocumentSnapshot ds) {
-        if(mounted) {
+        if (mounted) {
           setState(() {
-          profileInfo = ds.data() as Map<String, dynamic>?;
-        });
+            profileInfo = ds.data() as Map<String, dynamic>?;
+          });
         }
       });
     });
@@ -78,24 +83,19 @@ class _HomePageState extends State<HomePage> {
 
   void bodyContainer() {
     Color selectedColor = tabItems[selectedPos].circleColor;
-    String? selectedPage;
     setState(() {
       if (profileInfo != null) {
         switch (selectedPos) {
           case 0:
-            selectedPage = "Ara";
             selectedWidget = SearchPage();
             break;
           case 1:
-            selectedPage = "Anasayfa";
             selectedWidget = HomePageBody(context, profileInfo!);
             break;
           case 2:
-            selectedPage = "Defter";
             selectedWidget = Notebook();
             break;
           case 3:
-            selectedPage = "Profil";
             selectedWidget = userProfileBody(context, profileInfo!);
             break;
           default:

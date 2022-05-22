@@ -4,10 +4,14 @@ import 'package:myrecipe/Recipe/public_recipe/publicRecipe.dart';
 import 'package:myrecipe/login/sharedPrefs.dart';
 
 class RecipeCards extends StatefulWidget {
+  const RecipeCards({Key? key}) : super(key: key);
+
+  @override
   _RecipeCardsState createState() => _RecipeCardsState();
 }
 
 class _RecipeCardsState extends State<RecipeCards> {
+  @override
   Widget build(BuildContext context) {
     setState(() {});
     return StreamBuilder(
@@ -93,7 +97,7 @@ class _RecipeCardsState extends State<RecipeCards> {
                                             height: 70,
                                             child: Align(
                                               alignment: Alignment
-                                                  .bottomLeft,
+                                                  .centerLeft,
                                               child: RichText(
                                                 text: TextSpan(
                                                     style: DefaultTextStyle.of(
@@ -107,20 +111,6 @@ class _RecipeCardsState extends State<RecipeCards> {
                                               ),
                                             ),
                                           ),
-                                          FloatingActionButton(
-                                            heroTag: null,
-                                            onPressed: () {
-                                            },
-                                            child: Image.asset(
-                                              "assets/icon/recipeIcon.png",
-                                              height: 30,
-                                              width: 30,
-                                            ),
-                                            mini: true,
-                                            backgroundColor:
-                                            Colors.transparent,
-                                            elevation: 0,
-                                          ),
                                         ],
                                       )
                                     ],
@@ -129,10 +119,10 @@ class _RecipeCardsState extends State<RecipeCards> {
                                 decoration: BoxDecoration(
                                   border: Border.all(
                                       width: 1,
-                                      color: Colors.purple),
+                                      color: Colors.red),
                                   borderRadius:
                                   BorderRadius.circular(22),
-                                  color: const Color(0xFFEDE9F1),
+                                  color: const Color(0x13F44336),
                                 ),
                               ),
                             )),

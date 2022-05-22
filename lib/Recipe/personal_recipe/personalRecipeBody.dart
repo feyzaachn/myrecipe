@@ -5,15 +5,15 @@ import 'package:myrecipe/splashScreen.dart';
 import 'package:myrecipe/videoPlayer.dart';
 import 'package:video_player/video_player.dart';
 
-Widget PersonalRecipeBody(context,Map<String, dynamic>? PostInfo,String id) {
-  List materials=PostInfo!['Materials'];
-  List photos=PostInfo['PhotoRecipe'];
+Widget PersonalRecipeBody(context,Map<String, dynamic> PostInfo,String id) {
+  List materials=PostInfo['Materials'];
+  List? photos=PostInfo['PhotoRecipe'];
   return Column(
     children: [
       //Başlık
       Padding(
         padding: const EdgeInsets.all(10),
-        child: Container(
+        child: SizedBox(
           width: double.infinity,
           child: Text(
             PostInfo['Name'],
@@ -124,7 +124,7 @@ Widget PersonalRecipeBody(context,Map<String, dynamic>? PostInfo,String id) {
               ),
               Wrap(
                 children: [
-                  for(int i=0;i<photos.length;i++)
+                  for(int i=0;i<photos!.length;i++)
                     Padding(
                       padding: const EdgeInsets.all(5),
                       child: Container(
@@ -222,15 +222,15 @@ Future<void> DeletedRecipe(context,String id) async {
                   //tarif defterlerinden sil
                   await FirebaseFirestore.instance
                   .collection('Users')
-                  .get().then((QuerySnapshot qs){
-                    qs.docs.forEach((element) async{
+                  .get().then((QuerySnapshot qs) async {
+                    for (var element in qs.docs){
                       await FirebaseFirestore.instance
                           .collection('InTheNotebook')
                           .doc(element.id)
                           .collection('Recipes')
                           .doc(id)
                           .delete();
-                    });
+                    }
                   });
                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>const Splash(position: 3)));
                 },

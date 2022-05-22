@@ -7,7 +7,7 @@ Widget Notebook(){
     width: double.infinity,
     child: SingleChildScrollView(
       child: Column(
-        children: [
+        children: const [
           RecipeCards()
         ],
       ),

@@ -23,7 +23,7 @@ class _PublicRecipeBodyState extends State<PublicRecipeBody> {
   @override
   Widget build(BuildContext context) {
     List materials = PostInfo['Materials'];
-    List photos = PostInfo['PhotoRecipe'];
+    List? photos = PostInfo['PhotoRecipe'];
     FirebaseFirestore.instance
         .collection('InTheNotebook')
         .doc(SharedPrefs.getUid)
@@ -167,9 +167,10 @@ class _PublicRecipeBodyState extends State<PublicRecipeBody> {
                     )
                   ],
                 ),
+
                 Wrap(
                   children: [
-                    for (int i = 0; i < photos.length; i++)
+                    for (int i = 0; i < photos!.length; i++)
                       Padding(
                         padding: const EdgeInsets.all(5),
                         child: Container(

@@ -3,12 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:myrecipe/Recipe/public_recipe/publicRecipe.dart';
 
 class SearchPageBody extends StatefulWidget {
+  const SearchPageBody({Key? key}) : super(key: key);
+
+  @override
   _SearchPageBodyState createState() => _SearchPageBodyState();
 }
 
 class _SearchPageBodyState extends State<SearchPageBody> {
   String? enteredRecipe;
 
+  @override
   Widget build(BuildContext context) {
     return Column(
       children: [
@@ -28,20 +32,15 @@ class _SearchPageBodyState extends State<SearchPageBody> {
                   borderRadius: BorderRadius.circular(30),
                   borderSide:
                       const BorderSide(color: Colors.blueGrey, width: 0.5)),
-              labelText: "Şifre",
+              labelText: "Tarif Ara",
               labelStyle: const TextStyle(
                 color: Colors.blueGrey,
                 fontSize: 15,
               ),
-              prefixIcon: InkWell(
-                child: const Icon(
-                  Icons.search,
-                  color: Colors.blueGrey,
-                  size: 25,
-                ),
-                onTap: () {
-                  setState(() {});
-                },
+              prefixIcon: const Icon(
+                Icons.search,
+                color: Colors.blueGrey,
+                size: 25,
               ),
               focusedBorder: OutlineInputBorder(
                   //Text kutusuna tıklandıktan sonra
@@ -119,6 +118,7 @@ class _SearchPageBodyState extends State<SearchPageBody> {
                                                       ),
                                                     ],
                                                   ),
+                                                  //Kapak fotoğrafı
                                                   Row(
                                                     children: [
                                                       Padding(
@@ -135,6 +135,7 @@ class _SearchPageBodyState extends State<SearchPageBody> {
                                                                   'MainPhoto']),
                                                         ),
                                                       ),
+                                                      //kısaca tarif
                                                       Column(
                                                         crossAxisAlignment:
                                                             CrossAxisAlignment
@@ -145,7 +146,7 @@ class _SearchPageBodyState extends State<SearchPageBody> {
                                                             height: 70,
                                                             child: Align(
                                                               alignment: Alignment
-                                                                  .bottomLeft,
+                                                                  .centerLeft,
                                                               child: RichText(
                                                                 text: TextSpan(
                                                                     style: DefaultTextStyle.of(
@@ -159,20 +160,6 @@ class _SearchPageBodyState extends State<SearchPageBody> {
                                                               ),
                                                             ),
                                                           ),
-                                                          FloatingActionButton(
-                                                            heroTag: null,
-                                                            onPressed: () {},
-                                                            child: Image.asset(
-                                                              "assets/icon/recipeIcon.png",
-                                                              height: 30,
-                                                              width: 30,
-                                                            ),
-                                                            mini: true,
-                                                            backgroundColor:
-                                                                Colors
-                                                                    .transparent,
-                                                            elevation: 0,
-                                                          ),
                                                         ],
                                                       )
                                                     ],
@@ -181,11 +168,11 @@ class _SearchPageBodyState extends State<SearchPageBody> {
                                                 decoration: BoxDecoration(
                                                   border: Border.all(
                                                       width: 1,
-                                                      color: Colors.purple),
+                                                      color: Colors.lightGreen),
                                                   borderRadius:
                                                       BorderRadius.circular(22),
                                                   color:
-                                                      const Color(0xFFEDE9F1),
+                                                      const Color(0x1F91F691),
                                                 ),
                                               ),
                                             )),
@@ -193,16 +180,12 @@ class _SearchPageBodyState extends State<SearchPageBody> {
                                     );
                                   },
                                 ).toList())
-                              : Container(
-                                  color: Colors.pink,
-                                );
+                              : Container();
                         },
                       );
                     },
                   ).toList())
-                : Container(
-                    color: Colors.pink,
-                  );
+                : Container();
           },
         )
       ],

@@ -35,7 +35,7 @@ class _ProfileEditingPageState extends State<ProfileEditing> {
               children: [
                 //Düzenlemeyi bitiren buton
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     ElevatedButton(
                         onPressed: () {

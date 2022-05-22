@@ -2,6 +2,7 @@
 import 'package:myrecipe/register/registerPage.dart';
 import 'package:myrecipe/services/login/loginUserWithGoogle.dart';
 import 'package:myrecipe/services/login/loginUserWithMail.dart';
+import 'package:myrecipe/widgets/background.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -27,13 +28,7 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Container(
-                height: 300,
-                decoration: const BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage("assets/backgrounds/background2.png"),
-                        fit: BoxFit.fill)),
-              ),
+              Background(),
               const SizedBox(height: 30),
               //Mail
               Padding(

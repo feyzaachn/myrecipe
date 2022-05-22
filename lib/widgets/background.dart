@@ -5,7 +5,7 @@ Widget Background() {
     height: 300,
     decoration: const BoxDecoration(
         image: DecorationImage(
-            image: AssetImage("assets/backgrounds/background2.png"),
+            image: AssetImage("assets/backgrounds/loginBackground.png"),
             fit: BoxFit.fill)),
   );
 }
