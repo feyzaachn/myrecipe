@@ -197,128 +197,142 @@ class _PostRecipeState extends State<RecipePage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    ElevatedButton(
-                      onPressed: () {
-                        showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return AlertDialog(
-                                title: const Text("Malzeme Ekle"),
-                                actions: [
-                                  Form(
-                                      child: Column(
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 40, vertical: 5),
-                                            child: TextFormField(
-                                              onChanged: (enteredSize) {
-                                                materialsSize = enteredSize;
-                                              },
-                                              controller: TextEditingController(
-                                                  text: materialsSize ?? " "),
-                                              validator: (enteredSize) {
-                                                if (enteredSize == " " ||
-                                                    enteredSize == null) {
-                                                  return "Ölçüyü giriniz.(1 bardak,300gram vb.)";
-                                                } else {
-                                                  return null;
-                                                }
-                                              },
-                                              cursorColor: Colors.redAccent,
-                                              decoration: const InputDecoration(
-                                                  labelText: "Ölçü",
-                                                  labelStyle: TextStyle(
-                                                      color: Colors.red,
-                                                      fontWeight: FontWeight.bold,
-                                                      fontSize: 20),
-                                                  enabledBorder: OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                        color: Colors.red),
-                                                    borderRadius: BorderRadius.all(
-                                                        Radius.circular(33)),
-                                                  ),
-                                                  focusedBorder: OutlineInputBorder(
-                                                      borderSide: BorderSide(
-                                                          color: Colors.red),
-                                                      borderRadius:
-                                                      BorderRadius.all(
-                                                          Radius.circular(
-                                                              33)))),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 40, vertical: 5),
-                                            child: TextFormField(
-                                              onChanged: (enteredMaterils) {
-                                                materailsName = enteredMaterils;
-                                              },
-                                              controller: TextEditingController(
-                                                  text: materailsName ?? " "),
-                                              validator: (enteredMaterils) {
-                                                if (enteredMaterils == " " ||
-                                                    enteredMaterils == null) {
-                                                  return "Malzemeyi giriniz";
-                                                } else {
-                                                  return null;
-                                                }
-                                              },
-                                              cursorColor: Colors.redAccent,
-                                              decoration: const InputDecoration(
-                                                  labelText: "Malzeme",
-                                                  labelStyle: TextStyle(
-                                                      color: Colors.red,
-                                                      fontWeight: FontWeight.bold,
-                                                      fontSize: 20),
-                                                  enabledBorder: OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                        color: Colors.red),
-                                                    borderRadius: BorderRadius.all(
-                                                        Radius.circular(33)),
-                                                  ),
-                                                  focusedBorder: OutlineInputBorder(
-                                                      borderSide: BorderSide(
-                                                          color: Colors.red),
-                                                      borderRadius:
-                                                      BorderRadius.all(
-                                                          Radius.circular(
-                                                              33)))),
-                                            ),
-                                          ),
-                                          Row(
-                                            mainAxisAlignment:
-                                            MainAxisAlignment.center,
+                    Column(
+                      children: [
+                        ElevatedButton(
+                          onPressed: () {
+                            showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    title: const Text("Malzeme Ekle"),
+                                    actions: [
+                                      Form(
+                                          child: Column(
                                             children: [
-                                              ElevatedButton(
-                                                  onPressed: () {
-                                                    materials!.add((materialsSize!.startsWith(" ") ? materialsSize!.substring(1) : materialsSize!) +
-                                                        " " +
-                                                        (materailsName!.startsWith(" ") ? materailsName!.substring(1) : materailsName!));
-                                                    materialsSize = null;
-                                                    materailsName = null;
-                                                    setState(() {});
-                                                    Navigator.of(context).pop();
+                                              Padding(
+                                                padding: const EdgeInsets.symmetric(
+                                                    horizontal: 40, vertical: 5),
+                                                child: TextFormField(
+                                                  onChanged: (enteredSize) {
+                                                    materialsSize = enteredSize;
                                                   },
-                                                  style: ButtonStyle(
-                                                      backgroundColor:
-                                                      MaterialStateProperty.all(
-                                                          Colors.redAccent)),
-                                                  child: const Text("  EKLE  ")),
+                                                  controller: TextEditingController(
+                                                      text: materialsSize ?? " "),
+                                                  validator: (enteredSize) {
+                                                    if (enteredSize == " " ||
+                                                        enteredSize == null) {
+                                                      return "Ölçüyü giriniz.(1 bardak,300gram vb.)";
+                                                    } else {
+                                                      return null;
+                                                    }
+                                                  },
+                                                  cursorColor: Colors.redAccent,
+                                                  decoration: const InputDecoration(
+                                                      labelText: "Ölçü",
+                                                      labelStyle: TextStyle(
+                                                          color: Colors.red,
+                                                          fontWeight: FontWeight.bold,
+                                                          fontSize: 20),
+                                                      enabledBorder: OutlineInputBorder(
+                                                        borderSide: BorderSide(
+                                                            color: Colors.red),
+                                                        borderRadius: BorderRadius.all(
+                                                            Radius.circular(33)),
+                                                      ),
+                                                      focusedBorder: OutlineInputBorder(
+                                                          borderSide: BorderSide(
+                                                              color: Colors.red),
+                                                          borderRadius:
+                                                          BorderRadius.all(
+                                                              Radius.circular(
+                                                                  33)))),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsets.symmetric(
+                                                    horizontal: 40, vertical: 5),
+                                                child: TextFormField(
+                                                  onChanged: (enteredMaterils) {
+                                                    materailsName = enteredMaterils;
+                                                  },
+                                                  controller: TextEditingController(
+                                                      text: materailsName ?? " "),
+                                                  validator: (enteredMaterils) {
+                                                    if (enteredMaterils == " " ||
+                                                        enteredMaterils == null) {
+                                                      return "Malzemeyi giriniz";
+                                                    } else {
+                                                      return null;
+                                                    }
+                                                  },
+                                                  cursorColor: Colors.redAccent,
+                                                  decoration: const InputDecoration(
+                                                      labelText: "Malzeme",
+                                                      labelStyle: TextStyle(
+                                                          color: Colors.red,
+                                                          fontWeight: FontWeight.bold,
+                                                          fontSize: 20),
+                                                      enabledBorder: OutlineInputBorder(
+                                                        borderSide: BorderSide(
+                                                            color: Colors.red),
+                                                        borderRadius: BorderRadius.all(
+                                                            Radius.circular(33)),
+                                                      ),
+                                                      focusedBorder: OutlineInputBorder(
+                                                          borderSide: BorderSide(
+                                                              color: Colors.red),
+                                                          borderRadius:
+                                                          BorderRadius.all(
+                                                              Radius.circular(
+                                                                  33)))),
+                                                ),
+                                              ),
+                                              Row(
+                                                mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                                children: [
+                                                  ElevatedButton(
+                                                      onPressed: () {
+                                                        materials!.add((materialsSize!.startsWith(" ") ? materialsSize!.substring(1) : materialsSize!) +
+                                                            " " +
+                                                            (materailsName!.startsWith(" ") ? materailsName!.substring(1) : materailsName!));
+                                                        materialsSize = null;
+                                                        materailsName = null;
+                                                        setState(() {});
+                                                        Navigator.of(context).pop();
+                                                      },
+                                                      style: ButtonStyle(
+                                                          backgroundColor:
+                                                          MaterialStateProperty.all(
+                                                              Colors.redAccent)),
+                                                      child: const Text("  EKLE  ")),
+                                                ],
+                                              ),
                                             ],
-                                          ),
-                                        ],
-                                      )),
-                                ],
-                              );
-                            });
-                      },
-                      style: ButtonStyle(
-                          backgroundColor:
-                          MaterialStateProperty.all(Colors.redAccent)),
-                      child: Row(
-                        children: const [Icon(Icons.add), Text("Malzeme Ekle")],
-                      ),
+                                          )),
+                                    ],
+                                  );
+                                });
+                          },
+                          style: ButtonStyle(
+                              backgroundColor:
+                              MaterialStateProperty.all(Colors.redAccent)),
+                          child: Row(
+                            children: const [Icon(Icons.add), Text("Malzeme Ekle")],
+                          ),
+                        ),
+                        ElevatedButton(onPressed: (){
+                          if (materials!.isNotEmpty) {
+                            materials!.removeLast();
+                            setState(() {});
+                          }
+                        },
+                          child:Row(
+                          children: const [Icon(Icons.add), Text("Malzeme Çıkar")]),style: ButtonStyle(
+                            backgroundColor:
+                            MaterialStateProperty.all(Colors.redAccent)),),
+                      ],
                     ),
                     Wrap(
                       direction: Axis.vertical,

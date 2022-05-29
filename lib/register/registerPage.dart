@@ -27,7 +27,6 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor: Colors.white,
       body: Form(
         key: _key,
         child: SingleChildScrollView(
@@ -183,11 +182,27 @@ class _RegisterPageState extends State<RegisterPage> {
               const SizedBox(height: 15),
               Container(
                 alignment: Alignment.center,
-                child: GestureDetector(
-                  onTap: () => Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const LoginPage())),
-                  child:
-                      const Text("Daha önce kayıt olduysanız giriş ekranına gidin"),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text("Daha önce kayıt olduysanız ",
+                      style: TextStyle(
+                        fontSize: 15,
+                      ),),
+                    InkWell(
+                      child: const Text(
+                        "Giriş Ekranına Dönün",
+                        style: TextStyle(
+                            color: Color(0xFF6200FF),
+                            fontWeight: FontWeight.w900,
+                            fontSize: 15),
+                      ),
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => const LoginPage()));
+                      },
+                    ),
+                  ],
                 ),
               )
             ],

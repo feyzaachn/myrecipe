@@ -131,18 +131,8 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               const SizedBox(
-                height: 5,
+                height: 15,
               ),
-              const SizedBox(
-                width: 300,
-                child: Text("Şifremi unuttum",
-                  textAlign: TextAlign.end,
-                  style: TextStyle(
-                    decoration: TextDecoration.underline
-                  ),
-                  ),
-              ),
-              const SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
